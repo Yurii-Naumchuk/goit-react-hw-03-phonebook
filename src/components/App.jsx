@@ -10,18 +10,21 @@ export class App extends Component {
     contact: [],
     filter: '',
   };
+
   componentDidMount() {
     const contact = JSON.parse(localStorage.getItem('contact'));
     if (contact?.length) {
       this.setState({ contact });
     }
   }
+
   componentDidUpdate(prevProps, prevState) {
     const { contact } = this.state;
     if (prevState.contact !== contact) {
       localStorage.setItem('contact', JSON.stringify(contact));
     }
   }
+
   addContact = data => {
     if (this.isDublicate(data)) {
       return alert(`${data.name} -   is already in Phonebook List`);
@@ -36,6 +39,7 @@ export class App extends Component {
       };
     });
   };
+
   removeContact = id => {
     this.setState(prev => {
       const newContact = prev.contact.filter(item => item.id !== id);
@@ -44,12 +48,14 @@ export class App extends Component {
       };
     });
   };
+
   handleChange = e => {
     const { name, value } = e.target;
     this.setState({
       [name]: value,
     });
   };
+
   isDublicate({ name, phone }) {
     const { contact } = this.state;
     const result = contact.find(
@@ -57,6 +63,7 @@ export class App extends Component {
     );
     return result;
   }
+
   getFilterContacts() {
     const { contact, filter } = this.state;
 
@@ -71,6 +78,7 @@ export class App extends Component {
     });
     return filteredContact;
   }
+  
   render() {
     const { addContact, handleChange, removeContact } = this;
 

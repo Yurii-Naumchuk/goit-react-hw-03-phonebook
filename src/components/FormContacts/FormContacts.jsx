@@ -5,12 +5,14 @@ const initialValues = {
   login: '',
   password: '',
 };
+
 export const FormContacts = () => {
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
 
     resetForm();
   };
+  
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       <Form>

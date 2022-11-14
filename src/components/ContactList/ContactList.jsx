@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Ul, Li, Button } from './ContactList.styled';
+
 export function ContactList({ items, removeContact }) {
   const elements = items.map(({ name, phone, id }) => {
     return (

@@ -7,12 +7,15 @@ export class Form extends Component {
     name: '',
     phone: '',
   };
+
   nameId = nanoid();
   phoneId = nanoid();
+
   handleChange = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
+
   handleSubmit = e => {
     e.preventDefault();
     const { name, phone } = this.state;
@@ -23,6 +26,7 @@ export class Form extends Component {
     });
     console.log(name, phone);
   };
+  
   render() {
     const { nameId, phoneId, handleSubmit, handleChange } = this;
     return (
